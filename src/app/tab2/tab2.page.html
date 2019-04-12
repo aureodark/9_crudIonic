@@ -1,9 +1,36 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Cadastro de Produtos
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <form #fc="ngForm" (ngSubmit)="onSubmit(fc)">
+
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input clearInput [(ngModel)]="produto.nome" name="nome" type="text" required></ion-input>
+      <!-- [(ngModel)] = get do JavaScript e inserido em variável "produto.nome"-->
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-input clearInput [(ngModel)]="produto.descricao" name="descricao" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Quantidade</ion-label>
+      <ion-input clearInput [(ngModel)]="produto.quant" name="quant" type="number" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Valor</ion-label>
+      <ion-input clearInput [(ngModel)]="produto.valor" name="valor" type="number" required></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" [disabled]="!fc.valid">Salvar</ion-button>
+    <ion-button type="reset" (click)="back()">Cancelar</ion-button>
+
+  </form>
+</ion-content>
